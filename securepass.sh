@@ -1,47 +1,61 @@
 #!/bin/bash
-
-# Function to generate a random password
 generate_password() {
-  # Define acceptable characters
-  characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:,/?"
-  
-  # Generate random password length between 8 and 12
-  length=$(shuf -i 12-15 -n 1)
-  
-  # Initialize password variable
+  characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:,/?<>|"
+  num="0123456789"
+  sym='!@#$%^&*()-_=+[]{};:,/?<>|'
+  l_case="abcdefghijklmnopqrstuvwxyz"
+  u_case="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  length=$(shuf -i 10-14 -n 1)
   password=""
   num_count=0
   sym_count=0
 
-  # Generate password with desired length
-  for ((i = 0; i < length; i++)); do
-    random_char=${characters:RANDOM % ${#characters}:1}
-    password+=$random_char
+for ((i = 0; i < length; i++)); do
+  random_char=${characters:RANDOM % ${#characters}:1}
+  password+=$random_char
+  if [[ $random_char =~ [$num] ]]; then
+    num_count=$((num_count + 1))
+  fi
 
-    # Count characters and provide update
-    if [[ $random_char =~ [0-9] ]]; then
-      num_count=$((num_count + 1))
-    fi
+  if [[ $random_char =~ [$l_case] ]]; then
+    l_case=$((l_case + 1))
+  fi
 
-    if [[ $random_char =~ [@#%^*"$""&""!"-_+,/?] ]]; then
-      sym_count=$((sym_count + 1))
-    fi
-    
-    # Provide periodic update every 5 seconds
+  if [[ $random_char =~ [$u_case] ]]; then
+    u_case=$((u_case + 1))
+  fi
+
+  if [[ $random_char =~ [\$sym] ]]; then
+    sym_count=$((sym_count + 1))
+  fi
     if (( i % 1 == 0 )); then
-      tput bold ; tput setaf 8 ; echo "Generating Password: $password"
-    fi
-    sleep 0.1
+    echo -en '\n'
+    echo $'\e[1;31m-------------------------\e[0m'
+    echo -en '\n' && echo $'\e[1;31m-------------------------\e[0m'
+    echo $'\e[1;31;31m!!!Generating Password!!! \e[0m'
+    echo $'\e[1;31m-------------------------\e[0m'
+    echo -en '\n'
+    echo $'\e[1;31m-------------------------\e[0m'
+    echo -en '\n'
+    echo $'\e[1;31m' && echo "       $password" && echo $'\e[0m'
     clear
+    fi
   done
 
-  # Password validation
-  if ((length >= 10)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 3)); then
-    tput bold ; tput setaf 1 ; echo "Generated password: $password" ; tput sgr0
+  if ((length >= 7)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 2)) && ((u_case >= 1)); then
+    echo -en '\n'
+    echo -en '\n'
+    echo $'\e[1;31m-------------------------\e[0m'
+    echo -en '\n' && echo $'\e[1;31m   ------------------\e[0m'
+    echo $'\e[1;31m   Generated Password    \e[0m'
+    echo $'\e[1;31m   ------------------\e[0m'
+    echo -en '\n'
+    echo $'\e[1;31m-------------------------\e[0m'
+    echo -en '\n'
+    echo $'\e[1;36m' && echo "       $password" && echo $'\e[0m'
+	exit
   else
     generate_password
   fi
 }
-
-# Call generate_password function
 generate_password
