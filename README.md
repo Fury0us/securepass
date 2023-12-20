@@ -16,3 +16,5 @@ this script isnt as efficient as it could be, and has a few bugs, but ill add so
 ## Update 1
 added better looking functionality and some further enhancements to the generated password ensuring it has at lest 1-3 of each 
 symbols, numbers. lowercase, and uppercase letters
+## Update 2
+updated configuration and process as well as make things a little prettier
