@@ -5,11 +5,10 @@ generate_password() {
   sym='!@#$%^&*()-_=+[]{};:,/?<>|'
   l_case="abcdefghijklmnopqrstuvwxyz"
   u_case="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-  length=$(shuf -i 10-14 -n 1)
+  length=$(shuf -i 8-12 -n 1)
   password=""
   num_count=0
   sym_count=0
-
 for ((i = 0; i < length; i++)); do
   random_char=${characters:RANDOM % ${#characters}:1}
   password+=$random_char
@@ -29,26 +28,17 @@ for ((i = 0; i < length; i++)); do
     sym_count=$((sym_count + 1))
   fi
     if (( i % 1 == 0 )); then
-    echo -en '\n'
-    echo $'\e[1;31m-------------------------\e[0m'
-    echo -en '\n' && echo $'\e[1;31m-------------------------\e[0m'
-    echo $'\e[1;31;31m!!!Generating Password!!! \e[0m'
-    echo $'\e[1;31m-------------------------\e[0m'
-    echo -en '\n'
-    echo $'\e[1;31m-------------------------\e[0m'
-    echo -en '\n'
-    echo $'\e[1;31m' && echo "       $password" && echo $'\e[0m'
-    clear
+	clear
     fi
   done
-
-  if ((length >= 7)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 2)) && ((u_case >= 1)); then
+  if ((length >= 8)) && ((length <= 14)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 1)) && ((u_case >= 2)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 4)) && ((l_case >= 1)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 3)) && ((l_case >= 1)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 3)) && ((l_case >= 2)) && ((u_case >= 2)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 3)) && ((l_case >= 1)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 13)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 10)) && ((num_count >= 1)) && ((sym_count >= 3)) && ((l_case >= 1)) && ((u_case >= 1))
+  then
     echo -en '\n'
     echo -en '\n'
     echo $'\e[1;31m-------------------------\e[0m'
-    echo -en '\n' && echo $'\e[1;31m   ------------------\e[0m'
-    echo $'\e[1;31m   Generated Password    \e[0m'
-    echo $'\e[1;31m   ------------------\e[0m'
+    echo -en '\n' && echo $'\e[1;31m   --------------------\e[0m'
+    echo $'\e[1;31m   |Generated Password|    \e[0m'
+    echo $'\e[1;31m   --------------------\e[0m'
     echo -en '\n'
     echo $'\e[1;31m-------------------------\e[0m'
     echo -en '\n'
