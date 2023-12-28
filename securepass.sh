@@ -31,7 +31,7 @@ for ((i = 0; i < length; i++)); do
 	clear
     fi
   done
-  if ((length >= 8)) && ((length <= 14)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 1)) && ((u_case >= 2)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 4)) && ((l_case >= 1)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 3)) && ((l_case >= 1)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 3)) && ((l_case >= 2)) && ((u_case >= 2)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 12)) && ((num_count >= 1)) && ((sym_count >= 3)) && ((l_case >= 1)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 13)) && ((num_count >= 2)) && ((sym_count >= 2)) && ((l_case >= 3)) && ((u_case >= 1)) || ((length >= 8)) && ((length <= 10)) && ((num_count >= 1)) && ((sym_count >= 3)) && ((l_case >= 1)) && ((u_case >= 1))
+  if ((length >= 9)) && ((length <= 14)) && ((num_count >= 1-3)) && ((sym_count >= 2-3))&&((l_case >= 2-3)) && ((u_case >= 1-3))
   then
     echo -en '\n'
     echo -en '\n'
@@ -43,9 +43,8 @@ for ((i = 0; i < length; i++)); do
     echo $'\e[1;31m-------------------------\e[0m'
     echo -en '\n'
     echo $'\e[1;36m' && echo "       $password" && echo $'\e[0m'
-	exit
-  else
-    generate_password
+else
+generate_password
   fi
 }
 generate_password
