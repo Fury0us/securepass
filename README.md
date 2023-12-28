@@ -18,3 +18,5 @@ added better looking functionality and some further enhancements to the generate
 symbols, numbers. lowercase, and uppercase letters
 ## Update 2
 updated configuration and process as well as make things a little prettier
+## Update 12/27/23
+Added some much-needed optimization, now the script is lightning fast!
