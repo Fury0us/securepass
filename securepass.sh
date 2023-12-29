@@ -1,4 +1,15 @@
 #!/bin/bash
+asci_logo() {
+echo $'\e[36m'
+cat << EOF
+
+    dMMMMb  .aMMMb  .dMMMb  .dMMMb 
+   dMP.dMP dMP"dMP dMP" VP dMP" VP 
+  dMMMMP" dMMMMMP  VMMMb   VMMMb   
+ dMP     dMP dMP dP .dMP dP .dMP   
+dMP     dMP dMP  VMMMP"  VMMMP"    
+EOF
+}
 generate_password() {
   characters="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+[]{};:,/?<>|"
   num="0123456789"
@@ -31,18 +42,11 @@ for ((i = 0; i < length; i++)); do
 	clear
     fi
   done
-  if ((length >= 9)) && ((length <= 14)) && ((num_count >= 1-3)) && ((sym_count >= 2-3))&&((l_case >= 2-3)) && ((u_case >= 1-3))
+  if (($length >= 9)) && (($length <= 14)) && (($num_count >= 2-3)) && (($sym_count >= 2-3))&&(($l_case >= 2-3)) && (($u_case >= 2-3))
   then
+asci_logo
     echo -en '\n'
-    echo -en '\n'
-    echo $'\e[1;31m-------------------------\e[0m'
-    echo -en '\n' && echo $'\e[1;31m   --------------------\e[0m'
-    echo $'\e[1;31m   |Generated Password|    \e[0m'
-    echo $'\e[1;31m   --------------------\e[0m'
-    echo -en '\n'
-    echo $'\e[1;31m-------------------------\e[0m'
-    echo -en '\n'
-    echo $'\e[1;36m' && echo "       $password" && echo $'\e[0m'
+    echo $'\e[1;31m' && echo "           $password" && echo $'\e[0m'
 else
 generate_password
   fi
