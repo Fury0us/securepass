@@ -20,3 +20,5 @@ symbols, numbers. lowercase, and uppercase letters
 updated configuration and process as well as make things a little prettier
 ## Update 12/27/23
 Added some much-needed optimization, now the script is lightning fast!
+## Update 12/28/23
+added a cleaner UI and made the generated password even more secure, optimized a few lines
