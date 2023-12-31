@@ -47,6 +47,7 @@ for ((i = 0; i < length; i++)); do
 asci_logo
     echo -en '\n'
     echo $'\e[1;31m' && echo "           $password" && echo $'\e[0m'
+    echo -en '\n'
 else
 generate_password
   fi
